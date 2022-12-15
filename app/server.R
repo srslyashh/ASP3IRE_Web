@@ -943,6 +943,7 @@ server <- function(input, output, session)
   
   #------------ population in household by age --------------
   output$hhage_title = renderText({
+    out = ""
     if(input$hh_age == "Children in households under 3 years old")
     {
       out = paste("About under 3 years")
@@ -970,6 +971,7 @@ server <- function(input, output, session)
     out
   })
   output$hhage_variable = renderText({
+    out = ""
     if(input$hh_age == "Under 5 years")
     {
       out = paste("Explanation 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -1007,6 +1009,7 @@ server <- function(input, output, session)
   
   #------------ resources --------------
   output$resources_title = renderText({
+    out = ""
     if(input$resource_type == "Water")
     {
       out = paste("About Water")
@@ -1018,6 +1021,7 @@ server <- function(input, output, session)
     out
   })
   output$resources_variable = renderText({
+    out = ""
     if(input$resource_type == "Water")
     {
       out = paste("About Water - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
