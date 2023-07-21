@@ -5,7 +5,7 @@ Web data visualizations for ASP3IRE
 **Author**: Kathleen Ashley
 **Affiliation**: Oregon State University, ASP3IRE Children's Environmental Health, College of Public Health and Human Sciences
 **Principal Investigator**: Perry Hystad
-**Date last modified**: January 16 2023
+**Date last modified**: July 21 2023
 
 ## **Summary**
 This github repository contains the code to create an R shiny website with interactive visualizations (Map data visualization and interactive histogram) that were done through R packages. 
