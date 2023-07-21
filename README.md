@@ -3,8 +3,11 @@ Web data visualizations for ASP3IRE
 
 ## Information
 **Author**: Kathleen Ashley
+
 **Affiliation**: Oregon State University, ASP3IRE Children's Environmental Health, College of Public Health and Human Sciences
+
 **Principal Investigator**: Perry Hystad
+
 **Date last modified**: July 21 2023
 
 ## **Summary**
