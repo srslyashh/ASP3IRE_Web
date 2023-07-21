@@ -17,7 +17,6 @@ library(fresh) # fresh is used to create a custom bootstrap application with cus
 library(readr)
 
 source('webpages.r')
-source('~/Desktop/ASPIRE_WORK/asp3ire-gis/app/dataRetriever.r', local=TRUE)
 
 # Generates linebreaks when it is called. 
 # N here refers to the amount of linebreaks

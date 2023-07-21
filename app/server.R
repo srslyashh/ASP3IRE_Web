@@ -1,5 +1,3 @@
-source("~/Desktop/ASPIRE_WORK/asp3ire-gis/app/dataRetriever.r")
-
 options(shiny.autoreload = TRUE)
 
 server <- function(input, output, session) 
