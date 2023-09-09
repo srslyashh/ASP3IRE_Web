@@ -28,47 +28,37 @@ home_page <- div(
                       Research Translation for Children's Environment Health Center"))),
   tags$div(class="content",
            h3(class="title","Our Mission"),
-           p(class="normal-p", "We are a dedicated team working together to improve 
-                               children's health and wellbeing. Our efforts focus on
-                               accelerating the adoption of evidence informed policies,
-                               programs, and practices that can reduce harmful environmental
-                               exposures where children live, play, and go to school."),
+           uiOutput("mission_text"),
            tags$hr(),
            h3(class="center", "Projects")),
   div(class="flexbox-container",
       div(class="flexbox-item flexbox-item-1",
           div(class="photo-flexbox photo-flexbox-1"),
-          h3(class="flexbox-title", 
-             tags$a(class="flexbox-title-link",href=route_link("censusdata"), "Census Data")),
-          p(class="flexbox-p",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam."),
+          uiOutput("project_1_title"),
+          uiOutput("project_1_desc"),
           tags$a(class="blue-link flex-link", href=route_link("censusdata"), "Read full information >>")),
       div(class="flexbox-item flexbox-item-2",
           div(class="photo-flexbox photo-flexbox-2"),
-          h3(class="flexbox-title", 
-             tags$a(class="flexbox-title-link",href=route_link("schooldistricts"), "Oregon School Districts")),
-          p(class="flexbox-p",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam."),
+          uiOutput("project_2_title"),
+          uiOutput("project_2_desc"),
           tags$a(class="blue-link flex-link-2", href="", "Read full information >>")),
       div(class="flexbox-item flexbox-item-3",
           div(class="photo-flexbox photo-flexbox-3"),
-          h3(class="flexbox-title", "Twitter Coding"),
-          p(class="flexbox-p",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam."),
+          uiOutput("project_3_title"),
+          uiOutput("project_3_desc"),
           tags$a(class="blue-link flex-link", href="", "Read full information >>")),
       div(class="flexbox-item flexbox-item-4",
           div(class="photo-flexbox photo-flexbox-4"),
-          h3(class="flexbox-title", "Holder"),
-          p(class="flexbox-p",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam."),
+          uiOutput("project_4_title"),
+          uiOutput("project_4_desc"),
           tags$a(class="blue-link flex-link", href="", "Read full information >>")),
   )
 )
-
+# ------------------------------------------------------------------------------
+# This is the HTML structure for the census data page. Some things to take a note of:
+# > the expand button would only appear if the width of the screen is at 1300px or above.
+# > 
+#------------------------------------------------------------------------------
 censusdata <- div(
   tags$div(class="census-box",
            tags$div(class="information-box",
@@ -116,9 +106,7 @@ censusdata <- div(
                                                 )
                                         ),
                                         uiOutput("picture_holder_pov"),
-                                        tags$p(class = "topic-p topic-p-1",
-                                               textOutput("census_summary_pov")
-                                        )
+                                        uiOutput("pov_topic_desc")
                                )
                            )
                        ),
@@ -126,7 +114,7 @@ censusdata <- div(
                            div(id = "expandBox2",
                                tags$div(class = "inside-textbox",
                                         tags$h3(class = "topic-title",
-                                                textOutput("poverty_variableTitle"),
+                                                textOutput("pov_indicator_title"),
                                                 tags$button(
                                                   id = "expandButton2",
                                                   class = "btn btn-link",
@@ -134,9 +122,7 @@ censusdata <- div(
                                                   "Expand"
                                                 )
                                         ),
-                                        tags$p(class = "topic-p",
-                                               textOutput("poverty_variable")
-                                        )
+                                        uiOutput("census_summary_pov")
                                )
                            )
                        )
@@ -187,9 +173,7 @@ censusdata <- div(
                                                 )
                                         ),
                                         uiOutput("picture_holder_hc"),
-                                        tags$p(class = "topic-p topic-p-1",
-                                              textOutput("census_summary_hc")
-                                        )
+                                        uiOutput("hc_topic_desc")
                                )
                            )
                        ),
@@ -198,7 +182,7 @@ censusdata <- div(
                            div(id = "expandBox2",
                                tags$div(class = "inside-textbox",
                                         tags$h3(class = "topic-title",
-                                                textOutput("hc_title"),
+                                                textOutput("hc_indicator_title"),
                                                 tags$button(
                                                   id = "expandButton2",
                                                   class = "btn btn-link",
@@ -206,9 +190,7 @@ censusdata <- div(
                                                   "Expand"
                                                 )
                                         ),
-                                        tags$p(class = "topic-p",
-                                               textOutput("hc_variable")
-                                        )
+                                        uiOutput("census_summary_hc")
                                )
                            )
                        )
@@ -261,9 +243,7 @@ censusdata <- div(
                                                 )
                                         ),
                                         uiOutput("picture_holder_hha"),
-                                        tags$p(class = "topic-p topic-p-1",
-                                               textOutput("census_summary_hha")
-                                        )
+                                        uiOutput("hha_topic_desc")
                                )
                            )
                        ),
@@ -271,7 +251,7 @@ censusdata <- div(
                            div(id = "expandBox2",
                                tags$div(class = "inside-textbox",
                                         tags$h3(class = "topic-title",
-                                                textOutput("hhage_title"),
+                                                textOutput("hha_indicator_title"),
                                                 tags$button(
                                                   id = "expandButton2",
                                                   class = "btn btn-link",
@@ -279,9 +259,7 @@ censusdata <- div(
                                                   "Expand"
                                                 )
                                         ),
-                                        tags$p(class = "topic-p",
-                                               textOutput("hhage_variable")
-                                        )
+                                        uiOutput("census_summary_hha")
                                )
                            )
                        )
@@ -328,9 +306,7 @@ censusdata <- div(
                                                     )
                                             ),
                                             uiOutput("picture_holder_resource"),
-                                            tags$p(class="topic-p topic-p-1",
-                                                   textOutput("census_summary")
-                                            )
+                                            uiOutput("r_topic_desc")
                                    )
                                )
                            ),
@@ -338,7 +314,7 @@ censusdata <- div(
                                div(id = "expandBox2",
                                    tags$div(class = "inside-textbox",
                                             tags$h3(class = "topic-title",
-                                                    textOutput("resources_title"),
+                                                    textOutput("r_indicator_title"),
                                                     tags$button(
                                                       id = "expandButton2",
                                                       class = "btn btn-link",
@@ -346,9 +322,7 @@ censusdata <- div(
                                                       "Expand"
                                                     )
                                             ),
-                                            tags$p(class = "topic-p",
-                                                   textOutput("resources_variable")
-                                            )
+                                            uiOutput("census_summary")
                                    )
                                )
                            )
@@ -526,24 +500,39 @@ schooldistricts <- div(
                                    plotlyOutput("gradehist")
                                    )),
                    div(class="census-flex-container",
-                       div(class="census-item census-item-1",
-                           tags$img(src = "sd_grades.jpg", height = 170, class="img-topic"),
-                           tags$div(class="inside-textbox",
-                                    tags$h3(class="topic-title",
-                                            "School Districts Enrollment, 2021-2022"),
-                                    tags$p(class="topic-p",
-                                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                                     dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                     deserunt mollit anim id est laborum."))),
-                       div(class="census-item census-item-2",
-                           tags$div(class="inside-textbox",
-                                    tags$h3(class="topic-title",
-                                            ),
-                                    tags$p(class="topic-p",
-                                           
-                                    ))),
+                         div(class = "census-item census-item-1", # Place expandButton here
+                             tags$div(id = "expandBox1",
+                                      tags$div(class = "inside-textbox",
+                                               tags$h3(class = "topic-title", 
+                                                       "School Districts Enrollment, 2021-2022",
+                                                       tags$button(
+                                                         id = "expandButton1",
+                                                         class = "btn btn-link",
+                                                         type = "button",
+                                                         "Expand"
+                                                       )
+                                                ),
+                                               uiOutput("sd_image"),
+                                               uiOutput("sd_topic_desc"),
+                                      )
+                             )
+                         ),
+                         div(class = "census-item census-item-2", 
+                             tags$div(id = "expandBox2",
+                                      tags$div(class = "inside-textbox",
+                                               tags$h3(class = "topic-title", 
+                                                       textOutput("sd_indicator_title"),
+                                                       tags$button(
+                                                         id = "expandButton1",
+                                                         class = "btn btn-link",
+                                                         type = "button",
+                                                         "Expand"
+                                                       )
+                                                ),
+                                               uiOutput("sd_indicator_desc")
+                                      )
+                             )
+                         ),
                    ),
                    column(12,
                           tags$div(class="source-list",
@@ -580,26 +569,36 @@ schooldistricts <- div(
                           tags$div(class="center-plotly",
                                    plotlyOutput("racehist")
                                    )),
-                   div(class="census-flex-container",
-                       div(class="census-item census-item-1",
-                           tags$img(src = "sd_race.jpeg", height = 170, class="img-topic"),
-                           tags$div(class="inside-textbox",
-                                    tags$h3(class="topic-title",
-                                            "School Districts, Race, Oregon, 2021-2022"),
-                                    tags$p(class="topic-p",
-                                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                                     dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                     deserunt mollit anim id est laborum."))),
-                       div(class="census-item census-item-2",
-                           tags$div(class="inside-textbox",
-                                    tags$h3(class="topic-title",
-                                            
-                                            ),
-                                    tags$p(class="topic-p",
-                                           
-                                           ))),
+                   div(class = "census-flex-container",
+                       div(class = "census-item census-item-1",
+                           tags$div(class = "inside-textbox",
+                                    tags$h3(class = "topic-title",
+                                            "School Districts, Race, Oregon, 2021-2022",
+                                            tags$button(
+                                              id = "expandButton1",
+                                              class = "btn btn-link expand",
+                                              type = "button",
+                                              "Expand"
+                                            )
+                                    ),
+                                    uiOutput("sd_image_r"),
+                                    uiOutput("sd_topic_desc_r"),
+                           )
+                       ),
+                       div(class = "census-item census-item-2",
+                           tags$div(class = "inside-textbox",
+                                    tags$h3(class = "topic-title",
+                                            textOutput("sd_indicator_title_r"),
+                                            tags$button(
+                                              id = "expandButton2",
+                                              class = "btn btn-link expand",
+                                              type = "button",
+                                              "Expand"
+                                            )
+                                    ),
+                                    uiOutput("sd_indicator_desc_r"),
+                           )
+                       )
                    ),
                    column(12,
                           tags$div(class="source-list",

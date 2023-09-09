@@ -1,32 +1,132 @@
-# ASP3IRE Website
-Web data visualizations for ASP3IRE
+# ASP³IRE Website
+Web data visualizations for ASP³IRE
 
 ## Information
-**Author**: Kathleen Ashley
+**Author**: [Kathleen Ashley](https://www.linkedin.com/in/kthashley/)
 
-**Affiliation**: Oregon State University, ASP3IRE Children's Environmental Health, College of Public Health and Human Sciences
+**Affiliation**: Oregon State University, ASP³IRE Children's Environmental Health, College of Public Health and Human Sciences
 
-**Principal Investigator**: Perry Hystad
+**Principal Investigator**: [Perry Hystad](https://health.oregonstate.edu/people/perry-hystad)
 
-**Date last modified**: July 21 2023
+**Date last modified**: September 8th 2023
 
 ## **Summary**
-This github repository contains the code to create an R shiny website with interactive visualizations (Map data visualization and interactive histogram) that were done through R packages. 
+This GitHub repository contains the code to create an R Shiny website with interactive visualizations (Map data visualization and interactive histograms) that were created using R packages.
+
+## **R Packages**
+
+This project uses the following R packages:
+
+* [shinyscreenshot](https://github.com/daattali/shinyscreenshot)
+* [fresh](https://github.com/wch/fresh)
+* [plotly](https://plotly.com/r/)
+* [plyr](https://cran.r-project.org/package=plyr)
+* [raster](https://cran.r-project.org/package=raster)
+* [tigris](https://cran.r-project.org/package=tigris)
+* [sf](https://cran.r-project.org/package=sf)
+* [htmltools](https://cran.r-project.org/package=htmltools)
+* [htmlwidgets](https://cran.r-project.org/package=htmlwidgets)
+* [leaflet](https://cran.r-project.org/package=leaflet)
+* [shinyjs](https://cran.r-project.org/package=shinyjs)
+* [shinythemes](https://cran.r-project.org/package=shinythemes)
+* [forcats](https://cran.r-project.org/package=forcats)
+* [stringr](https://cran.r-project.org/package=stringr)
+* [dplyr](https://cran.r-project.org/package=dplyr)
+* [purrr](https://cran.r-project.org/package=purrr)
+* [readr](https://cran.r-project.org/package=readr)
+* [tidyr](https://cran.r-project.org/package=tidyr)
+* [tibble](https://cran.r-project.org/package=tibble)
+* [ggplot2](https://cran.r-project.org/package=ggplot2)
+* [tidyverse](https://tidyverse.org/)
+* [shiny.router](https://github.com/daattali/shiny.router)
+* [shiny](https://shiny.rstudio.com/)
+* [mapview](https://r-spatial.github.io/mapview/)
+* [sp](https://cran.r-project.org/package=sp)
+
+These packages can also be downloaded through R by using this command:
+
+    library(c("shiny", "tidyverse", "shiny.router", "shinythemes", "shinyjs", "leaflet", "htmlwidgets", "tigris", "raster", "plyr", "dplyr", "plotly", "fresh", "shinyscreenshot"))
+    
+## **Tools**
+- **R Studio**
+
+    R Studio is an integrated development environment (IDE) for R. It provides a graphical user interface (GUI) for writing R code, debugging, and running R scripts. You can download R Studio from the [R Studio website](https://rstudio.com/products/rstudio/download/).
+
+- **R Packages**
+
+    The R Packages above is used to develop this project, to be able to run this project locally, make sure to follow the steps listed on the section above.
+
+
+## **How to Fork This Repository**
+If you would like to contribute to this project or create your own customized version, follow these steps to fork the repository:
+
+1. Click the **Fork** button at the top right of this repository's page. This action will create a copy of the entire repository in your GitHub account.
+
+2. Once you have forked the repository, you can clone your forked version to your local machine using Git. Open your terminal and run the following command, replacing `<your-username>` with your GitHub username:
+
+   ```shell
+   git clone https://github.com/<your-username>/ASP3IRE_website.git
+
+3. After cloning the repository, you can navigate to the project directory:
+    ```shell
+    cd ASP3IRE_website
+
+4. Now you can make changes, enhancements, or customizations to the code!
+
+## **Start on Project**
+1. After downloading R, make sure to have the necessary packages installed by running this command:
+
+        library(c("shiny", "tidyverse", "shiny.router", "shinythemes", "shinyjs", "leaflet", "htmlwidgets", "tigris", "raster", "plyr", "dplyr", "plotly", "fresh", "shinyscreenshot"))
+  
+2. Afterwards, open the following files for easy access to manipulate the website:
+
+        global.R
+        server.R
+        ui.R
+        webpages.R
+3. Navigate to either ui.R, global.R, or server.R, then run the program by clicking the ‘Run app’ button in the upper right-hand corner of the screen.
 
 ## **Features**
-  - Data automation: loads data, creates maps and visualizations based on the data given, calculates the summary statistics for ease.
-      ![alt text](app/www/documentation/automation_data.png "Raw data of Oregon Census Tracts")
-      ![alt text](app/www/documentation/automation_visual.png "Interactive Visualization of census tract data using Leaflet and R shiny libraries")
-  - Organize datasets: datasets are divided and organized by topics, enabling users to switch between one topic and another within a click.
-      ![alt text](app/www/documentation/category_pic.png "A preview of the Oregon Census screen with the drop down menu containing organized datasets based on topics")
-  - Hover-over feature: A pop-up box will dynamically appear when a user hovers over an area in the map. The information in the box will be based on the geographical area chosen and selected category. 
-      ![alt text](app/www/documentation/ho_map.png "Exposure details for Oregon School tracts when hover over feature is used.")
-      ![alt text](app/www/documentation/ho_closeup.png "Exposure details for Oregon School districts when hover over feature is used.")
-  - Highlight-on-click feature: The highlight on click feature informs users the trend in a particular area when compared to other geographical areas in the map via a histogram. This feature also indicates where health exposures or health risks are higher in Oregon.
-      ![alt text](app/www/documentation/hoc_map.png "Dynamically updated Leaflet map after highlight-on-click is performed.")
-      ![alt text](app/www/documentation/hoc_histogram.png "Dynamically updated histogram after highlight-on-click is performed.")
-  - Map color gradients: The colors on the map and the legend that is located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location. 
-    ![alt text](app/www/documentation/colorgradient.png "A preview of the map color gradients on the map and on the legend highlighted in red")
+  - **Data Automation:** Loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
+      ![Raw data of Oregon Census Tracts](app/www/documentation/automation_data.png)
+      ![Interactive Visualization of census tract data using Leaflet and R Shiny libraries](app/www/documentation/automation_visual.png)
+  - **Organized Datasets:** Datasets are divided and organized by topics, enabling users to switch between different topics with a single click.
+      ![A preview of the Oregon Census screen with the drop-down menu containing organized datasets based on topics](app/www/documentation/category_pic.png)
+  - **Hover-Over Feature:** A pop-up box dynamically appears when a user hovers over an area on the map, displaying information based on the selected geographical area and category.
+      ![Exposure details for Oregon School tracts when the hover-over feature is used](app/www/documentation/ho_map.png)
+      ![Exposure details for Oregon School districts when the hover-over feature is used](app/www/documentation/ho_closeup.png)
+  - **Highlight-on-Click Feature:** The highlight-on-click feature informs users about trends in a particular area compared to other geographical areas on the map via a histogram. This feature also indicates where health exposures or risks are higher in Oregon.
+      ![Dynamically updated Leaflet map after the highlight-on-click feature is performed](app/www/documentation/hoc_map.png)
+      ![Dynamically updated histogram after the highlight-on-click feature is performed](app/www/documentation/hoc_histogram.png)
+  - **Map Color Gradients:** The colors on the map and the legend located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location.
+    ![A preview of the map color gradients on the map and on the legend](app/www/documentation/colorgradient.png)
+    
+
+## **Additional Resources**  
+#### Hands-on Programming with R
+This comprehensive book is an excellent resource for anyone looking to grasp the fundamental concepts of R programming, especially if you are new to the language. It provided invaluable insights and guidance during my initial months of working with R. If you are starting from scratch with R, I highly recommend beginning here. You can access the PDF version of the book [here](https://web.itu.edu.tr/~tokerem/Hands-On_R.pdf).
+
+#### Interactive Visualization Tutorials
+##### [Interactive Map of 2019 Covid Spread using R Shiny Tutorial](https://www.youtube.com/watch?v=eIpiL6y1oQQ)
+This tutorial serves as a step-by-step guide to creating interactive maps using R Shiny. If you're interested in understanding how the interactive maps on the website were developed, I recommend watching this tutorial. It will help you gain insights into the techniques used to build engaging and interactive data visualizations.
+
+#### StackOverflow
+Most of the maps featured on the website were developed through a process of trial and error, as well as by seeking answers to specific questions on platforms like Stack Overflow. I recommend adopting a proactive approach by using search engines to find answers to any questions or challenges you encounter while working with R. Chances are, someone else has faced a similar issue and shared their solution.
+
+#### [Mastering Shiny](https://mastering-shiny.org/basic-app.html)
+The "Mastering Shiny" website offers a wealth of step-by-step guides for creating your first R Shiny applications. This resource was particularly valuable in helping me become familiar with the R Shiny environment, understanding the structure of R Shiny projects, and identifying the relevant packages to use for various project requirements. Whether you are a beginner or looking to enhance your Shiny skills, this resource is a valuable reference.
+
+#### Media Queries
+For responsive design and ensuring your web applications look and function well on different devices and screen sizes, mastering media queries is essential. These queries allow you to apply specific styles to your web content based on the user's device characteristics. To create professional and visually appealing web applications, consider learning more about media queries and their implementation.
+
+Feel free to explore these resources to enhance your R programming and interactive data visualization skills. They will help you develop a strong foundation and become proficient in creating impactful data-driven applications.
+
+- [Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)
+- [Media Queries example](https://www.w3schools.com/css/css3_mediaqueries_ex.asp)
+
+
+## **External Links**
+  - [Oregon Census Data](https://example-link-here)
   
-  ## **External Links**
-  - Oregon Census Data: [insert link here]
+  
+  

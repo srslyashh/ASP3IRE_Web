@@ -501,6 +501,21 @@ fetch_resources = function(args, type)
   return(rdata)
 }
 
+#-------------------------------------------------------------------------------
+# generateListItems
+#-------------------------------------------------------------------------------
+# >Purpose: 
+#     This function is designed to create an HTML unordered list (<ul>)
+#     containing a list of items with clickable links. It takes two arrays ('array' and 'linksArr') as inputs
+#     and generates a structured list with hyperlinked items.
+#
+# Arguments:
+# - array: An array containing the names or labels of the items to be displayed.
+# - linksArr: An array containing the URLs or links corresponding to each item in the list.
+#
+# * This was used to create the Resources on the environmental variable topic of
+#   the census data page.
+#-------------------------------------------------------------------------------
 generateListItems <- function(array, linksArr) {
   tags$ul(class="bullet-points",
     lapply(seq_along(array), function(i) {
@@ -511,11 +526,160 @@ generateListItems <- function(array, linksArr) {
   )
 }
 
+#-------------------------------------------------------------------------------
+# generateWebText
+#-------------------------------------------------------------------------------
+# > Purpose: 
+#    Generates an HTML element based on the type that is given. 
+#
+# > Arguments:
+# - type : This type are the variables listed in the Webpage_ASPIRE.csv file (which are:
+#          Mission_Text, Project_1_Title, Project_2_Title, Project_3_Title, Project_4_Title, 
+#.         Project_1_Desc, Project_2_Desc, Project_3_Desc, Project_4_Desc)
+# - text : The text that is supposed to be put in the element
+#-------------------------------------------------------------------------------
+generateWebText <- function(type, text) {
+  if (type == "Mission_Text") {
+    return(
+      tags$p(class = "normal-p", text)
+    )
+  }
+  if (type == "Project_1_Title" || type == "Project_2_Title" || type == "Project_3_Title" || type == "Project_4_Title") 
+  {
+    # We're routing the titles to each perspective webpages. route_link will automatically link the webpages with 
+    # the webpages assigned from webpages.R.
+    if(type == "Project_1_Title")
+    {
+      return(
+        tags$h3(class = "flexbox-title",
+                tags$a(class = "flexbox-title-link", href = route_link("censusdata"), text))
+      )
+    }
+    if(type == "Project_2_Title")
+    {
+      return(
+        tags$h3(class = "flexbox-title",
+                tags$a(class = "flexbox-title-link", href = route_link("schooldistricts"), text))
+      )
+    }
+    if(type == "Project_3_Title" || type == "Project_4_Title" )
+    {
+      return(
+        tags$h3(class = "flexbox-title", text)
+      )
+    }
+  }
+  
+  if(type == "Project_1_Desc" || type == "Project_2_Desc" || type == "Project_3_Desc" || type == "Project_4_Desc")
+  {
+    return(
+      tags$p(class = "flexbox-p", text)
+    )
+  }
+}
+#========================================================================================================
+# fetch_text_sd
+#------------------------------------
+# Purpose:
+# fetch_text_sd function retrieves specific information from the "SchoolDistricts_ASPIRE_Collapsed.csv" dataset
+# based on the specified type and input type (indicator).
+# Parameters:
+#   - type: A character string indicating the type of information to fetch (e.g., "Topic_Desc", "Indicator_Title").
+#       (type can only be the indicators that are already stated in SchoolDistricts_ASPIRE_Collapsed.csv file).
+#   - inp_type: A character string specifying the input type (indicator) to filter the dataset.
+#       (inpt_type is based on the selectInput function in webpages.R, if it's poverty status, then the 
+#         inp_type would be input$age, if it's health insurance coverage, it'd be input$hc_age, etc).
+# Returns:
+#   - A character string containing the fetched information based on the specified type.
+#========================================================================================================
+fetch_text_sd = function(type, inp_type)
+{
+  oregon_sd = read_csv("SchoolDistricts_ASPIRE_Collapsed.csv")
+  indicator = inp_type
+  sd = oregon_sd[oregon_sd$Indicator == indicator, ]
+  
+  value = ""
+  if(type == "Topic_Desc")
+  {
+    value = sd$Topic_Desc
+  }
+  if(type == "Indicator_Title")
+  {
+    value = sd$Indicator_Title
+  }
+  if(type == "Indicator_Desc")
+  {
+    value = sd$Indicator_Desc
+  }
+  if(type == "Image_url")
+  {
+    value = sd$Image_url
+  }
+  
+  return(value)
+}
+
+#-------------------------------------------------------------------------------
+# generateSchoolUI
+#-------------------------------------------------------------------------------
+# > Purpose: 
+#    Generates an HTML element based on the type that is given. 
+#
+# > Arguments:
+# - type : Type could be either Indicator_Desc or Topic_Desc (look at the documentation)
+#           for which variable would be located in the website.
+# - text : The text that is supposed to be put in the element
+#
+# > Return Value:
+#   Based on the type, the css that is applied to the response would be different.
+#-------------------------------------------------------------------------------
+generateSchoolUI <- function(type, text) {
+  if (type == "Topic_Desc") {
+    return(
+      tags$p(class = "topic-p topic-p-1",
+           text  
+      )
+    )
+  }
+  if(type == "Indicator_Desc")
+  {
+    return(
+      tags$p(class = "topic-p",
+             text  
+      )
+    )
+  }
+}
+
+#-------------------------------------------------------------------------------
+# generatePic
+#-------------------------------------------------------------------------------
+# > Purpose: 
+#    Generates an HTML image element (<img>).
+#    It takes a 'photo_url' as input and sets the 'src' attribute of the image to the provided URL.
+#    Additionally, it specifies the 'height' and 'class' attributes for styling purposes.
+#
+# > Arguments:
+# - photo_url: A URL string specifying the source of the image to be displayed.
+#-------------------------------------------------------------------------------
 generatePic <- function(photo_url)
 {
   tags$img(src = photo_url, height = 170, class = "img-topic")
 }
 
+#-------------------------------------------------------------------------------
+# generatePoliciesItems
+#-------------------------------------------------------------------------------
+# > Purpose: 
+#    Generates policy items that is located in the environmental variable on
+#    the census data page. It takes three arrays ('array,' 'linksArr,' and 'descArr') as inputs
+#    and constructs a structured list with clickable links and item descriptions.
+#
+# > Arguments:
+# - array: An array containing the names or labels of policy items.
+# - linksArr: An array containing the URLs for the policy item links.
+# - descArr: An array containing descriptions or details for each policy item.
+#-------------------------------------------------------------------------------
 generatePoliciesItems <- function(array, linksArr, descArr) {
   tags$ul(class = "bullet-points",
           lapply(seq_along(array), function(i) {
@@ -529,7 +693,12 @@ generatePoliciesItems <- function(array, linksArr, descArr) {
   )
 }
 
-
+#-------------------------------------------------------------------------------
+# leafletMap
+#-------------------------------------------------------------------------------
+# Creates leaflet map for these topics: 
+# health insurance coverage, poverty status, and resources (Census Data)
+#-------------------------------------------------------------------------------
 leafletMap = function(data, legendTitle)
 {
   all_census = readRDS("all_census.RDS")
@@ -569,6 +738,12 @@ leafletMap = function(data, legendTitle)
   return(l_map)
 }
 
+#-------------------------------------------------------------------------------
+# fethc_histogram
+#-------------------------------------------------------------------------------
+# Fetches the histogram for the topics listed below: 
+# health insurance coverage, poverty status, and resources (Census Data) 
+#-------------------------------------------------------------------------------
 fetch_histogram = function(population, histTitle, meanTitle, mean, arg="normal")
 {
   bin = 0
@@ -708,6 +883,38 @@ fetch_observe_vars= function(args, type, data_title, id, dataset)
   return(value)
 }
 
+#------------------------------------------------------------------------------------------------------------------
+# fetch_text_wildfire
+#------------------------------------------------------------------------------------------------------------------
+# This was created for the environment variables section of Census Data. 
+#  - Any variables associated here are already documented in the documentation
+#   underneath the third section which is Format and Screenshots of Variables. 
+# > Purpose: 
+#    This fetches texts from the file "Resources_ASPIRE_Collapsed.csv" 
+#    and uses the texts to dynamically populate the website.
+# > Parameters:
+#   - type: Character string indicating the type of data to retrieve ("summary", "title", "url", "resources", "policies", "localResources").
+#   - data: Character string specifying additional data retrieval ("num", "names", "links", "desc") 
+#     based on the selected type (see note below)
+#   - inp_type: Character string specifying the indicator to filter the data.
+# > Returns:
+#   - A character string containing the requested data based on the specified type and data.
+# > Example:
+#   If you're trying to fetch Resource_Names for Wildfire Smoke, this is the call you'd make:
+#       array_name = as.array(fetch_text_wildfire("localResources", "names", input$env_var))
+#   If you're trying to fetch Policies Links for Well Water Contamination, this is the call:
+#       array_name = as.array(fetch_text_wildfire("policies", "names", input$env_var))
+#   If you're trying to get the img_url for an indicator, do this:
+#       img_url = fetch_text_wildfire("url", "", input$env_var)
+# *note:
+#   > Since some of the variables (Resource_Names, Resource_Links, Oregon_Program_Name has a list of 
+#     sentences, this function would return as an array which is why the examples above require as.array()
+#     wrapping the response. Otherwise, the function could be called by doing simply fetch_text_wildfire() 
+#     without as.array() wrapping it.
+#   > Depending on the call you're trying to make, the parameter "data" can either be "names", "links", "desc" or "num".
+#     at times when you don't need it (the example of the photo_url or summary), you could put "" or "0" on the 
+#     data parameter.
+#------------------------------------------------------------------------------------------------------------------
 fetch_text_wildfire = function(type, data, inp_type)
 {
   oregonr_csv <- read_csv("Resources_ASPIRE_Collapsed.csv")
@@ -783,6 +990,55 @@ fetch_text_wildfire = function(type, data, inp_type)
   return(value)
 }
 
+#-------------------------------------------------------------------------------
+# fetch_text_webpage
+#-------------------------------------------------------------------------------
+# This was created for the homepage of ASPIRE website.
+# - Any variables associated here are already documented in the documentation
+#   underneath the third section which is Format and Screenshots of Variables. 
+# > Purpose:
+#   This function fetches texts from the file "Webpage_ASPIRE.csv" 
+#   and uses the texts to dynamically populate the website.
+# > Arguments:
+#   - type: type here should be any variables that is listed under "Variable"
+#     in the Webpage_ASPIRE.csv. It is case-sensitive and has to be exactly the same.
+#   - if you're wanting to fetch the text variable for Mission_Text, 
+#     call this function with fetch_text_webpage("Mission_Text"). 
+#-------------------------------------------------------------------------------
+fetch_text_webpage <- function(type) {
+  # Load the CSV file
+  webpage_text <- read.csv("Webpage_ASPIRE.csv")
+  
+  oregon_wp = webpage_text[webpage_text$Variable == type, ]
+  
+  return(oregon_wp$Text_Variable)
+}
+
+#-------------------------------------------------------------------------------
+# fetch_text_census
+#-------------------------------------------------------------------------------
+# This was created for the Census Data page of the ASPIRE website. 
+# - Any variables associated here are already documented in the documentation
+#   underneath the third section which is Format and Screenshots of Variables. 
+# > Purpose:
+#   This function fetches texts from the file "Census_ASPIRE_Collapsed.csv" 
+#   and uses the texts to dynamically populate the website.
+# > Some topics associated here:
+#   > Resources
+#   > Population in Household by Age
+#   > Poverty Status
+#   > Health Insurance Coverage
+# Parameters:
+#   - type: Character string indicating the type of data to retrieve 
+#     ("url", "summary", "Topic_Desc", "Indicator_Title").
+#   - data: Data frame containing the census data (just use "0" for this, it was
+#     used for some errors in the file)
+#   - inp_type: Character string specifying the indicator to filter the data
+#     (inp_type is based on the name you put on selectInput in webpages.R, 
+#     if you're trying to fetch data based on poverty status, use input$age, and so on).
+# Returns:
+#   - A character string containing the requested data based on the specified type.
+#-------------------------------------------------------------------------------
 fetch_text_census = function(type, data, inp_type)
 {
   oregonr_csv <- read_csv("Census_ASPIRE_Collapsed.csv")
@@ -798,9 +1054,51 @@ fetch_text_census = function(type, data, inp_type)
   {
     value = oregon_resources$Summary
   }
+  if(type == "Topic_Desc")
+  {
+    value = oregon_resources$Topic_Desc
+  }
+  if(type == "Indicator_Title")
+  {
+    value = oregon_resources$Indicator_Title
+  }
   return(value)
 }
 
+#-------------------------------------------------------------------------------
+# generateCensusUI
+#-------------------------------------------------------------------------------
+# > Purpose: 
+#    Generates an HTML element based on the type that is given. 
+#
+# > Arguments:
+# - type : Type could be either Indicator_Desc or Topic_Desc
+# - text : The text that is supposed to be put in the element
+#-------------------------------------------------------------------------------
+generateCensusUI <- function(type, text) {
+  if (type == "Topic_Desc") {
+    return(
+      tags$p(class = "topic-p topic-p-1",
+             text  
+      )
+    )
+  }
+  if(type == "summary")
+  {
+    return(
+      tags$p(class = "topic-p", text
+      )
+    )
+  }
+}
+
+#-------------------------------------------------------------------------------
+# turn_to_list
+#-------------------------------------------------------------------------------
+# Purpose: 
+#   This custom R function, 'turn_to_list,' is designed to convert data into an unordered list
+#   (<ul>) format based on the provided 'args.'
+#-------------------------------------------------------------------------------
 turn_to_list = function(args)
 {
   ul= tags$ul()
@@ -887,43 +1185,58 @@ fetch_sd_leaflet_var = function(args, type, dataTitle)
   return(value)
 }
 
+#-------------------------------------------------------------------------------
+# fetch_sd_leaflet_map
+#-------------------------------------------------------------------------------
+# > Purpose:
+#   This function creates an interactive leaflet map visualization
+#   displaying data for each school district, with population-based color coding.
+#   This function reads school district geometries from the "all_schooldistricts.RDS" file and
+#   requires the Leaflet and sf libraries.
+# > Parameters:
+#   - data: Numeric vector containing the data values to be displayed on the map.
+#   - legendTitle: Character string specifying the title for the map legend.
+# > Returns:
+#   - An interactive leaflet map displaying school district data, color-coded by population.
+#-------------------------------------------------------------------------------
+
 fetch_sd_leaflet_map = function(data, legendTitle)
 {
-  # # fetch all_schoold data:
-  # all_schoold = readRDS("all_schooldistricts.RDS")
-  # view(all_schoold)
-  # 
-  # # 1. making the label for the map: 
-  # labels = sprintf("<strong>%s<strong><br/>Total population: %g",
-  #                  all_schoold$NAME.x, data) %>%
-  #   lapply(htmltools::HTML)
-  # 
-  # # 2. Making the color palette, dividing it into 9 categories.
-  # pal = colorBin(palette="OrRd", 5, domain = data, pretty = TRUE)
-  # 
-  # # Making the map for the particular data given: 
-  # map_interactive = all_schoold %>% 
-  #   st_transform(crs = "EPSG:4326") %>%
-  #   leaflet() %>%
-  #   addProviderTiles(provider="CartoDB.Positron") %>%
-  #   addPolygons(label = labels, 
-  #               stroke = TRUE, 
-  #               color= "#d6d5de",
-  #               weight= 1,
-  #               smoothFactor = .5, 
-  #               opacity = 0.5,
-  #               fillOpacity = 0.7,
-  #               fillColor = ~pal(data),
-  #               layerId = all_schoold$GEOID,
-  #               highlightOptions = highlightOptions(weight=2,
-  #                                                   fillOpacity=1, 
-  #                                                   color="black",
-  #                                                   opacity=0.5,
-  #                                                   bringToFront= TRUE)) %>%
-  #   addLegend("bottomright", 
-  #             pal=pal,
-  #             values = data,
-  #             title = legendTitle,
-  #             opacity = 0.7)
+  # fetch all_schoold data:
+  all_schoold = readRDS("all_schooldistricts.RDS")
+  #view(all_schoold)
+
+  # 1. making the label for the map:
+  labels = sprintf("<strong>%s<strong><br/>Total population: %g",
+                   all_schoold$NAME.x, data) %>%
+    lapply(htmltools::HTML)
+
+  # 2. Making the color palette, dividing it into 9 categories.
+  pal = colorBin(palette="OrRd", 5, domain = data, pretty = TRUE)
+
+  # Making the map for the particular data given:
+  map_interactive = all_schoold %>%
+    st_transform(crs = "EPSG:4326") %>%
+    leaflet() %>%
+    addProviderTiles(provider="CartoDB.Positron") %>%
+    addPolygons(label = labels,
+                stroke = TRUE,
+                color= "#d6d5de",
+                weight= 1,
+                smoothFactor = .5,
+                opacity = 0.5,
+                fillOpacity = 0.7,
+                fillColor = ~pal(data),
+                layerId = all_schoold$GEOID,
+                highlightOptions = highlightOptions(weight=2,
+                                                    fillOpacity=1,
+                                                    color="black",
+                                                    opacity=0.5,
+                                                    bringToFront= TRUE)) %>%
+    addLegend("bottomright",
+              pal=pal,
+              values = data,
+              title = legendTitle,
+              opacity = 0.7)
 }
 #shinyApp(ui = ui, server = server)

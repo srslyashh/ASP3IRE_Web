@@ -210,13 +210,6 @@ ui <- fluidPage(
               text-align: center;
             }
             
-            .img-topic{
-              width: 50%;
-              border-radius: 0px 0px 0px 0px;
-              position: relative;
-              left: -100px;
-            }
-            
             html, body{
               height: 100%;
             }
@@ -792,7 +785,37 @@ ui <- fluidPage(
               margin-top: 5px;
             }
             
+            .img-topic{
+              width: 90%;
+              border-radius: 0px 0px 0px 0px;
+              position: relative;
+              left: 0px;
+              padding-bottom: 10px;
+            }
+          
+            
         @media only screen and (max-width: 610px) {
+          #expandButton1{
+              margin-left: 370px;
+              margin-top: -45px;
+            }
+            
+            #expandButton2{
+              margin-left: 370px;
+              margin-top: -45px;
+            }
+            
+            #expandButton3{
+              margin-left: 370px;
+              margin-top: -45px;
+            }
+          
+            
+            #expandButton4{
+              margin-left: 370px;
+              margin-top: -45px;
+            }
+              
             text.legendtitletext{
               font-size: 1.2rem;
             }
@@ -1110,6 +1133,27 @@ ui <- fluidPage(
         
          @media (min-width: 959px)
          {
+              #expandButton1{
+                margin-left: 280px;
+                margin-top: -45px;
+              }
+              
+              #expandButton2{
+                margin-left: 280px;
+                margin-top: -45px;
+              }
+              
+              #expandButton3{
+                margin-left: 280px;
+                margin-top: -45px;
+              }
+            
+              
+              #expandButton4{
+                margin-left: 280px;
+                margin-top: -45px;
+              }
+              
               body
               {
                 font-size: 1.3rem;
@@ -1177,9 +1221,68 @@ ui <- fluidPage(
               background-color: rgba(217,217,217, 0.25);
             }
          }
-         
+        
+        @media (min-width: 1096px)
+        {
+          #expandButton3{
+            margin-left: 710px;
+            margin-top: -45px;
+          }
+        
+          
+          #expandButton4{
+            margin-left: 710px;
+            margin-top: -45px;
+          }
+        }
+        
+        /*
+          If the width of the screen is less than 1300px, hide the Expand button 
+          from the census page.
+        */
+        @media(max-width: 1300px)
+        {
+          .census-item{
+            height: auto !important;
+          }
+          .topic-p{
+            display: block !important;
+          }
+          .btn.btn-link{
+            display: none !important;
+          }
+        }
+           
          @media (min-width:1300px)
         {
+           #expandButton1{
+            margin-left: 280px;
+            margin-top: -10px;
+          }
+          
+          #expandButton2{
+          margin-left: 280px;
+          margin-top: -10px;
+          }
+          
+          #expandButton3{
+          margin-left: 280px;
+          margin-top: -10px;
+          }
+          
+          
+          #expandButton4{
+          margin-left: 280px;
+          margin-top: -10px;
+          }
+          
+         .img-topic{
+            width: 50%;
+            border-radius: 0px 0px 0px 0px;
+            position: relative;
+            left: -100px;
+          }
+          
           body
           {
             font-size: 1.3rem;
@@ -1262,46 +1365,6 @@ ui <- fluidPage(
               .census-item.expanded .topic-p {
                 display: block;
               }
-              
-              #envvar_summary{
-              position: relative;
-              margin-left: 300px;
-              top: -170px;
-              margin-right: 40px;
-              margin-bottom: -160px;
-              }
-        
-             #census_summary{
-              position: relative;
-              margin-left: 300px;
-              top: -170px;
-              margin-right: 40px;
-              margin-bottom: -160px;
-             }
-             
-             #census_summary_hha{
-              position: relative;
-              margin-left: 300px;
-              top: -170px;
-              margin-right: 40px;
-              margin-bottom: -160px;
-             }
-             
-             #census_summary_hc{
-              position: relative;
-              margin-left: 300px;
-              top: -170px;
-              margin-right: 40px;
-              margin-bottom: -160px;
-             }
-             
-             #census_summary_pov{
-              position: relative;
-              margin-left: 300px;
-              top: -170px;
-              margin-right: 40px;
-              margin-bottom: -160px;
-             }
         }
       
         "
