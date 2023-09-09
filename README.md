@@ -4,7 +4,7 @@ Our ASP3IRE website utilizes interactive visualization techniques to enhance dat
 ## Information
 **Author**: [Kathleen Ashley](https://www.linkedin.com/in/kthashley/)
 
-**Affiliation**: Oregon State University, ASP³IRE Children's Environmental Health, College of Public Health and Human Sciences
+**Affiliation**: Oregon State University, [ASP³IRE Children's Environmental Health, College of Public Health and Human Sciences](https://health.oregonstate.edu/asp3ire)
 
 **Principal Investigator**: [Perry Hystad](https://health.oregonstate.edu/people/perry-hystad)
 
