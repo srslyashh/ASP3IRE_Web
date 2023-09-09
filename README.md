@@ -89,29 +89,29 @@ If you would like to contribute to this project or create your own customized ve
 ## **Features**
 
 ### Data Automation
-Loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
+Automatically fetches data from .csv files and dynamically presents it on the website for user interaction. This feature loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
 
 <img src="app/www/documentation/automation_data.png" width="400" height="300">
 
 ### Organized Datasets
-Datasets are divided and organized by topics, enabling users to switch between different topics with a single click.
+Datasets are categorized and neatly organized, allowing users to effortlessly switch between different topics with a single click.
 
 <img src="app/www/documentation/category_pic.png" width="400" height="300">
 
 ### Hover-Over Feature
-A pop-up box dynamically appears when a user hovers over an area on the map, displaying information based on the selected geographical area and category.
+A pop-up box dynamically appears when a user hovers over an area on the map, displaying pertinent information based on the selected geographical area and category.
 
 <img src="app/www/documentation/ho_map.png" width="400" height="300">
 <img src="app/www/documentation/ho_closeup.png" width="400" height="300">
 
 ### Highlight-on-Click Feature
-The highlight-on-click feature informs users about trends in a particular area compared to other geographical areas on the map via a histogram. This feature also indicates where health exposures or risks are higher in Oregon.
+The highlight-on-click feature provides users with insights into trends within a particular area compared to other geographical regions on the map, using interactive histograms. This feature also identifies areas with higher health exposures or risks in Oregon.
 
 <img src="app/www/documentation/hoc_map.png" width="400" height="300">
 <img src="app/www/documentation/hoc_histogram.png" width="400" height="300">
 
 ### Map Color Gradients
-The colors on the map and the legend located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location.
+The map's color scheme and the legend located in the bottom right corner visually represent the spatial distribution of environmental exposures for each location.
 
 <img src="app/www/documentation/colorgradient.png" width="400" height="300">
 
