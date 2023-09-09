@@ -1,5 +1,5 @@
 # ASP³IRE Website
-Web data visualizations for ASP³IRE
+Our ASP3IRE website utilizes interactive visualization techniques to enhance data exploration. Our key features include hover-over functionality, which provides detailed information when users interact with maps, as well as a highlight-on-click feature that allows users to uncover insights within the data. Additionally, we employ dynamic text boxes that appear upon user interaction. Our goal is to present data in an engaging manner while effectively conveying complex spatial and temporal information.
 
 ## Information
 **Author**: [Kathleen Ashley](https://www.linkedin.com/in/kthashley/)
@@ -90,24 +90,29 @@ If you would like to contribute to this project or create your own customized ve
 
 ### Data Automation
 Loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
+
 <img src="app/www/documentation/automation_data.png" width="400" height="300">
 
 ### Organized Datasets
 Datasets are divided and organized by topics, enabling users to switch between different topics with a single click.
+
 <img src="app/www/documentation/category_pic.png" width="400" height="300">
 
 ### Hover-Over Feature
 A pop-up box dynamically appears when a user hovers over an area on the map, displaying information based on the selected geographical area and category.
+
 <img src="app/www/documentation/ho_map.png" width="400" height="300">
 <img src="app/www/documentation/ho_closeup.png" width="400" height="300">
 
 ### Highlight-on-Click Feature
 The highlight-on-click feature informs users about trends in a particular area compared to other geographical areas on the map via a histogram. This feature also indicates where health exposures or risks are higher in Oregon.
+
 <img src="app/www/documentation/hoc_map.png" width="400" height="300">
 <img src="app/www/documentation/hoc_histogram.png" width="400" height="300">
 
 ### Map Color Gradients
 The colors on the map and the legend located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location.
+
 <img src="app/www/documentation/colorgradient.png" width="400" height="300">
 
     
@@ -137,6 +142,3 @@ Feel free to explore these resources to enhance your R programming and interacti
 
 ## **External Links**
   - [Oregon Census Data](https://example-link-here)
-  
-  
-  
