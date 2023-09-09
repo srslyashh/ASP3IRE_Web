@@ -87,19 +87,29 @@ If you would like to contribute to this project or create your own customized ve
 3. Navigate to either ui.R, global.R, or server.R, then run the program by clicking the ‘Run app’ button in the upper right-hand corner of the screen.
 
 ## **Features**
-  - **Data Automation:** Loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
-      ![Raw data of Oregon Census Tracts](app/www/documentation/automation_data.png)
-      ![Interactive Visualization of census tract data using Leaflet and R Shiny libraries](app/www/documentation/automation_visual.png)
-  - **Organized Datasets:** Datasets are divided and organized by topics, enabling users to switch between different topics with a single click.
-      ![A preview of the Oregon Census screen with the drop-down menu containing organized datasets based on topics](app/www/documentation/category_pic.png)
-  - **Hover-Over Feature:** A pop-up box dynamically appears when a user hovers over an area on the map, displaying information based on the selected geographical area and category.
-      ![Exposure details for Oregon School tracts when the hover-over feature is used](app/www/documentation/ho_map.png)
-      ![Exposure details for Oregon School districts when the hover-over feature is used](app/www/documentation/ho_closeup.png)
-  - **Highlight-on-Click Feature:** The highlight-on-click feature informs users about trends in a particular area compared to other geographical areas on the map via a histogram. This feature also indicates where health exposures or risks are higher in Oregon.
-      ![Dynamically updated Leaflet map after the highlight-on-click feature is performed](app/www/documentation/hoc_map.png)
-      ![Dynamically updated histogram after the highlight-on-click feature is performed](app/www/documentation/hoc_histogram.png)
-  - **Map Color Gradients:** The colors on the map and the legend located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location.
-    ![A preview of the map color gradients on the map and on the legend](app/www/documentation/colorgradient.png)
+
+### Data Automation
+Loads data, creates maps, and visualizations based on the provided data, and calculates summary statistics for ease.
+<img src="app/www/documentation/automation_data.png" width="400" height="300">
+
+### Organized Datasets
+Datasets are divided and organized by topics, enabling users to switch between different topics with a single click.
+<img src="app/www/documentation/category_pic.png" width="400" height="300">
+
+### Hover-Over Feature
+A pop-up box dynamically appears when a user hovers over an area on the map, displaying information based on the selected geographical area and category.
+<img src="app/www/documentation/ho_map.png" width="400" height="300">
+<img src="app/www/documentation/ho_closeup.png" width="400" height="300">
+
+### Highlight-on-Click Feature
+The highlight-on-click feature informs users about trends in a particular area compared to other geographical areas on the map via a histogram. This feature also indicates where health exposures or risks are higher in Oregon.
+<img src="app/www/documentation/hoc_map.png" width="400" height="300">
+<img src="app/www/documentation/hoc_histogram.png" width="400" height="300">
+
+### Map Color Gradients
+The colors on the map and the legend located on the bottom right of the map indicate the spatial distribution and environmental exposures for each location.
+<img src="app/www/documentation/colorgradient.png" width="400" height="300">
+
     
 
 ## **Additional Resources**  
